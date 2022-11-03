@@ -1,0 +1,27 @@
+[
+  {
+    "Id": 1,
+    "ArabicName": "أدارة المبيعات",
+    "EnglishName": "Sales Management"
+  },
+  {
+    "Id": 2,
+    "ArabicName": "الشئون القانونيه",
+    "EnglishName": "Legal affairs"
+  },
+  {
+    "Id": 3,
+    "ArabicName": "المبيعات",
+    "EnglishName": "Sales"
+  },
+  {
+    "Id": 4,
+    "ArabicName": "المرتجعات",
+    "EnglishName": "Returns"
+  },
+  {
+    "Id": 5,
+    "ArabicName": "نقاط البيع",
+    "EnglishName": "Point of Sale"
+  }
+]

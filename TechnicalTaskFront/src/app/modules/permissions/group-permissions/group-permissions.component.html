@@ -1,0 +1,73 @@
+
+
+<ng-container>
+    <div class="grid">
+      <div class="col-9 table">
+        <p class="header">group-permissions</p>
+
+      <div class="group-list">
+        <div>
+          <p-dropdown (onChange)="groupChange()"  [options]="groups"
+            [(ngModel)]="selectedGroup" optionLabel="englishName" placeholder="Select a Group"
+            [showClear]="true" (onClear)="groupClear()">
+            <option>--None Selected--</option>
+          </p-dropdown>
+          <button (click)="groupModeldisplay=groupModeldisplay==false?true:false" pButton pRipple type="button" label="Add New Group" class="p-button-outlined ml-1"></button>
+        </div>
+        <div>
+          <button (click)="savePermissions()" pButton pRipple type="button" label="Save" class="p-button-outlined"></button>
+        </div>
+      </div>
+
+        <p-table [value]="pagePermissionsTableData" responsiveLayout="scroll">
+          <ng-template pTemplate="header">
+              <tr>
+                  <th>English Name</th>
+                  <th>Arabic Name</th>
+                  <th>Can View</th>
+                  <th>Can Add</th>
+                  <th>Can Edit</th>
+                  <th>Can Delete</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-one>
+              <tr *ngIf="veiwAllPages">
+                <td>{{one.englishName}}</td>
+                <td>{{one.arabicName}}</td>
+                <td><p-checkbox [disabled]="true"></p-checkbox></td>
+                <td><p-checkbox [disabled]="true"></p-checkbox></td>
+                <td><p-checkbox [disabled]="true"></p-checkbox></td>
+                <td><p-checkbox [disabled]="true"></p-checkbox></td>
+              </tr>
+              <tr *ngIf="!veiwAllPages">
+                  <td>{{one.page.englishName}}</td>
+                  <td>{{one.page.arabicName}}</td>
+                  <td>
+                    <p-checkbox [binary]="true" value="true" [(ngModel)]="one.canView"></p-checkbox>
+                  </td>
+                  <td>
+                    <p-checkbox [binary]="true" value="true" [(ngModel)]="one.canAdd"></p-checkbox>
+                  </td>
+                  <td>
+                    <p-checkbox [binary]="true" value="true" [(ngModel)]="one.canEdit"></p-checkbox>
+                  </td>
+                  <td>
+                    <p-checkbox [binary]="true" value="true" [(ngModel)]="one.canDelete"></p-checkbox>
+                  </td>
+              </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+</ng-container>
+
+<!-- add New Groups -->
+<p-dialog header="Add New Group" [(visible)]="groupModeldisplay">
+  <groups (groupAdd)="groupAdd($event)"></groups>
+</p-dialog>
+
+<p-toast></p-toast>
+
+
+
+
